@@ -119,7 +119,7 @@
         const kipasDaya = parseFloat(document.getElementById('kipasDaya').value) || 0;
         const kwhKipas = (kipasDaya * 6.6 * 365) / 1000;
         const hasilKipas = document.getElementById('hasilKipas');
-        hasilKipas.innerHTML = `Konsumsi/tahun:<br><b>${kwhKipas.toFixed(2)} kWh</b>`;
+        hasilKipas.innerHTML = `Konsumsi/tahun:<br><b>${kwhKipas} kWh</b>`;
         hasilKipas.style.display = 'block';
     });
 
@@ -127,7 +127,7 @@
         const nasiDaya = parseFloat(document.getElementById('nasiDaya').value) || 0;
         const kwhNasi = (nasiDaya * 5 * 365) / 1000;
         const hasilNasi = document.getElementById('hasilNasi');
-        hasilNasi.innerHTML = `Konsumsi/tahun:<br><b>${kwhNasi.toFixed(2)} kWh</b>`;
+        hasilNasi.innerHTML = `Konsumsi/tahun:<br><b>${kwhNasi} kWh</b>`;
         hasilNasi.style.display = 'block';
     });
 </script>
