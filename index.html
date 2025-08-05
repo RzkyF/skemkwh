@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Hitung Konsumsi kWh per Produk</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f6fb;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 32px 24px 24px 24px;
+        }
+        h1 {
+            text-align: center;
+            color: #2d3a4b;
+            margin-bottom: 32px;
+        }
+        .cards {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background: #f9fafc;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            padding: 24px 20px 20px 20px;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card h2 {
+            margin: 0 0 12px 0;
+            font-size: 1.2em;
+            color: #3a4a5e;
+        }
+        .card label {
+            margin-bottom: 8px;
+            width: 100%;
+            color: #4b5a6b;
+        }
+        .card input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #cfd8dc;
+            margin-bottom: 12px;
+            font-size: 1em;
+        }
+        .card .hasil {
+            margin-top: 10px;
+            color: #1b7e3c;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .btn-hitung {
+            background: #3a7afe;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 24px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 32px auto 0 auto;
+            display: block;
+            transition: background 0.2s;
+        }
+        .btn-hitung:hover {
+            background: #2556b8;
+        }
+        @media (max-width: 600px) {
+            .cards {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .container {
+                padding: 16px 4px 16px 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hitung Konsumsi kWh per Produk</h1>
+        <!-- ...existing code... -->
+        <form id="formKwh" autocomplete="off">
+            <div class="cards">
+                <div class="card" id="cardKipas">
+                    <h2>Kipas Angin</h2>
+                    <label for="kipasDaya">Daya (Watt):</label>
+                    <input type="number" id="kipasDaya" min="0" placeholder="Contoh: 45" required>
+                    <button type="button" class="btn-hitung" id="btnKipas">Hitung Konsumsi</button>
+                    <div class="hasil" id="hasilKipas" style="display:none"></div>
+                </div>
+                <div class="card" id="cardNasi">
+                    <h2>Penanak Nasi</h2>
+                    <label for="nasiDaya">Daya (Watt):</label>
+                    <input type="number" id="nasiDaya" min="0" placeholder="Contoh: 300" required>
+                    <button type="button" class="btn-hitung" id="btnNasi">Hitung Konsumsi</button>
+                    <div class="hasil" id="hasilNasi" style="display:none"></div>
+                </div>
+            </div>
+            </form>
+        <div id="hasilKategori" style="max-width:600px;margin:32px auto 0 auto;padding:20px 24px;background:#f9fafc;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:1.1em;color:#2d3a4b;display:none"></div>
+    </div>
+    <script>
+    
+    document.getElementById('btnKipas').addEventListener('click', function() {
+        const kipasDaya = parseFloat(document.getElementById('kipasDaya').value) || 0;
+        const kwhKipas = (kipasDaya * 6.6 * 365) / 1000;
+        const hasilKipas = document.getElementById('hasilKipas');
+        hasilKipas.innerHTML = `Konsumsi/tahun:<br><b>${kwhKipas.toFixed(2)} kWh</b>`;
+        hasilKipas.style.display = 'block';
+    });
+
+    document.getElementById('btnNasi').addEventListener('click', function() {
+        const nasiDaya = parseFloat(document.getElementById('nasiDaya').value) || 0;
+        const kwhNasi = (nasiDaya * 5 * 365) / 1000;
+        const hasilNasi = document.getElementById('hasilNasi');
+        hasilNasi.innerHTML = `Konsumsi/tahun:<br><b>${kwhNasi.toFixed(2)} kWh</b>`;
+        hasilNasi.style.display = 'block';
+    });
+</script>
+ 
+</body>
+</html>
