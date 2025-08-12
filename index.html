@@ -98,16 +98,58 @@
                 <div class="card" id="cardKipas">
                     <h2>Kipas Angin</h2>
                     <label for="kipasDaya">Daya (Watt):</label>
-                    <input type="number" id="kipasDaya" min="0" placeholder="Contoh: 45" required>
+                    <input type="number" id="kipasDaya" placeholder="Contoh: 45" required>
                     <button type="button" class="btn-hitung" id="btnKipas">Hitung Konsumsi</button>
                     <div class="hasil" id="hasilKipas" style="display:none"></div>
                 </div>
                 <div class="card" id="cardNasi">
                     <h2>Penanak Nasi</h2>
                     <label for="nasiDaya">Daya (Watt):</label>
-                    <input type="number" id="nasiDaya" min="0" placeholder="Contoh: 300" required>
+                    <input type="number" id="nasiDaya" placeholder="Contoh: 300" required>
                     <button type="button" class="btn-hitung" id="btnNasi">Hitung Konsumsi</button>
                     <div class="hasil" id="hasilNasi" style="display:none"></div>
+                </div>
+                <div class="card" id="cardAC">
+                    <h2>Penanak AC</h2>
+                    <label for="ACDaya">Daya (Watt):</label>
+                    <input type="number" id="ACDaya" placeholder="Contoh: 300" required>
+                    <button type="button" class="btn-hitung" id="btnAC">Hitung Konsumsi</button>
+                    <div class="hasil" id="hasilAC" style="display:none"></div>
+                </div>
+                <div class="card" id="cardAC">
+                    <h2>AC</h2>
+                    <label for="ACDaya">Daya (Watt):</label>
+                    <input type="number" id="ACDaya" placeholder="Contoh: 300" required>
+                    <button type="button" class="btn-hitung" id="btnAC">Hitung Konsumsi</button>
+                    <div class="hasil" id="hasilAC" style="display:none"></div>
+                </div>
+                <div class="card" id="cardKulkas">
+                    <h2>Lemari Pendingin</h2>
+                    <label for="kulkasDaya">Daya (Watt):</label>
+                    <input type="number" id="kulkasDaya" placeholder="Contoh: 100" required>
+                    <button type="button" class="btn-hitung" id="btnKulkas">Hitung Konsumsi</button>
+                    <div class="hasil" id="hasilKulkas" style="display:none"></div>
+                </div>
+                <div class="card" id="cardTelevisi">
+                    <h2>Televisi</h2>
+                    <label for="televisiDaya">Daya (Watt):</label>
+                    <input type="number" id="televisiDaya" placeholder="Contoh: 300" required>
+                    <button type="button" class="btn-hitung" id="btnTelevisi">Hitung Konsumsi</button>
+                    <div class="hasil" id="hasilTelevisi" style="display:none"></div>
+                </div>
+                <div class="card" id="cardled">
+                    <h2>Lampu LED</h2>
+                    <label for="ledDaya">Daya (Watt):</label>
+                    <input type="number" id="ledDaya" placeholder="Contoh: 10" required>
+                    <button type="button" class="btn-hitung" id="btnLED">Hitung Konsumsi</button>
+                    <div class="hasil" id="hasilLED" style="display:none"></div>
+                </div>
+                <div class="card" id="cardAC">
+                    <h2>Refrigerated Display Case</h2>
+                    <label for="refrigeratedDaya">Daya (Watt):</label>
+                    <input type="number" id="refrigeratedDaya" placeholder="Contoh: 300" required>
+                    <button type="button" class="btn-hitung" id="btnRefrigerated">Hitung Konsumsi</button>
+                    <div class="hasil" id="hasilRefrigerated" style="display:none"></div>
                 </div>
             </div>
             </form>
@@ -116,6 +158,10 @@
     <script>
     
     document.getElementById('btnKipas').addEventListener('click', function() {
+    if (kipasDaya = 0) {
+        hasilKipas.innerHTML = `Input daya tidak boleh 0`;
+        hasilKipas.style.display = 'block';
+    }
         const kipasDaya = parseFloat(document.getElementById('kipasDaya').value) || 0;
         const kwhKipas = (kipasDaya * 6.6 * 365) / 1000;
         const hasilKipas = document.getElementById('hasilKipas');
@@ -129,6 +175,42 @@
         const hasilNasi = document.getElementById('hasilNasi');
         hasilNasi.innerHTML = `Konsumsi/tahun:<br><b>${kwhNasi} kWh</b>`;
         hasilNasi.style.display = 'block';
+    });
+
+     document.getElementById('btnAC').addEventListener('click', function() {
+        const ACDaya = parseFloat(document.getElementById('ACDaya').value) || 0;
+        const kwhAC = (ACDaya * 8 * 365) / 1000;
+        const hasilAC = document.getElementById('hasilAC');
+        hasilAC.innerHTML = `Konsumsi/tahun:<br><b>${kwhAC} kWh</b>`;
+        hasilAC.style.display = 'block';
+    });
+    document.getElementById('btnKulkas').addEventListener('click', function() {
+        const kulkasDaya = parseFloat(document.getElementById('kulkasDaya').value) || 0;
+        const kwhKulkas = (kulkasDaya * 24 * 365) / 1000;
+        const hasilKulkas = document.getElementById('hasilKulkas');
+        hasilKulkas.innerHTML = `Konsumsi/tahun:<br><b>${kwhKulkas} kWh</b>`;
+        hasilKulkas.style.display = 'block';
+    });
+     document.getElementById('btnTelevisi').addEventListener('click', function() {
+        const TelevisiDaya = parseFloat(document.getElementById('televisiDaya').value) || 0;
+        const kwhTelevisi = (TelevisiDaya * 5 * 365) / 1000;
+        const hasilTelevisi = document.getElementById('hasilTelevisi');
+        hasilTelevisi.innerHTML = `Konsumsi/tahun:<br><b>${kwhTelevisi} kWh</b>`;
+        hasilTelevisi.style.display = 'block';
+    });
+     document.getElementById('btnLEDswa').addEventListener('click', function() {
+        const LEDDaya = parseFloat(document.getElementById('ledDaya').value) || 0;
+        const kwhLED = (LEDDaya * 8 * 365) / 1000;
+        const hasilLED = document.getElementById('hasilLED');
+        hasilLED.innerHTML = `Konsumsi/tahun:<br><b>${kwhLED} kWh</b>`;
+        hasilLED.style.display = 'block';
+    });
+    document.getElementById('btnRefrigerated').addEventListener('click', function() {
+        const RefrigeratedDaya = parseFloat(document.getElementById('refrigeratedDaya').value) || 0;
+        const kwhRefrigerated = (RefrigeratedDaya * 8 * 365) / 1000;
+        const hasilRefrigerated = document.getElementById('hasilRefrigerated');
+        hasilRefrigerated.innerHTML = `Konsumsi/tahun:<br><b>${kwhRefrigerated} kWh</b>`;
+        hasilRefrigerated.style.display = 'block';
     });
 </script>
  
