@@ -1,4 +1,4 @@
-    document.getElementById('btnKipas').addEventListener('click', function() {
+ document.getElementById('btnKipas').addEventListener('click', function() {
     if (kipasDaya = 0) {
         hasilKipas.innerHTML = `Input daya tidak boleh 0`;
         hasilKipas.style.display = 'block';
